@@ -1,0 +1,92 @@
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    nav {
+        padding: 15px 20px;
+    }
+}
+/* General page styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f8ff;
+    color: #1e293b;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #ffffff;
+    padding: 15px 40px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+nav h2 {
+    color: #2563eb;
+    margin: 0;
+}
+
+/* Main heading */
+header {
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+header h1 {
+    color: #1d4ed8;
+    font-size: 42px;
+}
+
+header p {
+    color: #64748b;
+    font-size: 17px;
+}
+
+/* Cards container */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Individual cards */
+.card {
+    background-color: white;
+    padding: 30px;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+}
+
+/* Card headings */
+.card h2 {
+    color: #2563eb;
+}
+
+/* Card descriptions */
+.card p {
+    color: #64748b;
+}
+
+/* Explore links */
+.card a {
+    display: inline-block;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+/* Hover effect */
+.card a:hover {
+    background-color: #1e40af;
+}

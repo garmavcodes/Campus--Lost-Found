@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Item</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>Campus Lost & Found</h2>
+    </nav>
+
+    <header>
+        <h1>Report a Lost Item</h1>
+        <p>Tell us about the item you have lost.</p>
+    </header>
+
+    <form id="lostForm">
+        <!-- We'll add form fields here -->
+         <label for="itemName">Item Name:</label>
+         <input type="text" id="itemName" name="itemName" required>
+         <label for="personName">Your Name:</label>
+         <input type="text" id="personName" name="personName" required>
+         <label for="location">Location Lost:</label>
+         <input type="text" id="location" name="location" required>
+         <label for="date">Date Lost:</label>
+         <input type="date" id="date" name="date" required>
+         <label for="time">Time Lost:</label>
+         <input type="time" id="time" name="time" required>
+         <label for="description">Description:</label>
+         <textarea id="description" name="description" rows="4" required></textarea>
+         <label for="photo">Upload Photo (Optional):</label>
+         <input type="file" id="photo" name="photo" accept="image/*">
+         <button type="submit">Submit Report</button>
+
+    </form>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
