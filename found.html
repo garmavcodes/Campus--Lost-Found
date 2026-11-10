@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Item</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <h2>Campus Lost & Found</h2>
+    </nav>
+
+    <header>
+        <h1>Report a Found Item</h1>
+        <p>Tell us about the item you have found.</p>
+    </header>
+
+    <form id="foundForm">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" required>
+
+        <label for="location">Location Found:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="date">Date Found:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time Found:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+
+        <button type="submit">Submit Found Report</button>
+
+</form>
+
+
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
