@@ -82,56 +82,55 @@ if (foundForm) {
     });
 }
 
-const itemsContainer = document.getElementById("itemsContainer");
 
-if (itemsContainer) {
+const lostItemsContainer = document.getElementById("lostItemsContainer");
+const foundItemsContainer = document.getElementById("foundItemsContainer");
+
+if (lostItemsContainer && foundItemsContainer) {
 
     let reports = JSON.parse(localStorage.getItem("reports")) || [];
 
-    if (reports.length === 0) {
-        itemsContainer.textContent = "No items reported yet.";
-    }
+    function displayItems(items, container) {
 
-    reports.forEach(function(report) {
-
-        const card = document.createElement("div");
-        card.className = "item-card";
-
-        const title = document.createElement("h2");
-        title.textContent = report.itemName;
-
-        const type = document.createElement("p");
-        type.textContent = "Type: " + report.type;
-
-        const location = document.createElement("p");
-        location.textContent = "Location: " + report.location;
-
-        const date = document.createElement("p");
-        date.textContent = "Date: " + report.date;
-
-        const time = document.createElement("p");
-        time.textContent = "Time: " + report.time;
-
-        const description = document.createElement("p");
-        description.textContent = "Description: " + report.description;
-
-        card.appendChild(title);
-        card.appendChild(type);
-        card.appendChild(location);
-        card.appendChild(date);
-        card.appendChild(time);
-        card.appendChild(description);
-
-        if (report.image) {
-            const image = document.createElement("img");
-            image.src = report.image;
-            image.alt = report.itemName;
-            image.style.width = "150px";
-
-            card.appendChild(image);
+        if (items.length === 0) {
+            container.textContent = "No items reported yet.";
+            return;
         }
 
-        itemsContainer.appendChild(card);
+        items.forEach(function(report) {
 
+            const card = document.createElement("div");
+            card.className = "item-card";
+
+            card.innerHTML = `
+                <h3>${report.itemName}</h3>
+                <p><strong>Location:</strong> ${report.location}</p>
+                <p><strong>Date:</strong> ${report.date}</p>
+                <p><strong>Time:</strong> ${report.time}</p>
+                <p><strong>Description:</strong> ${report.description}</p>
+            `;
+
+            if (report.image) {
+                const image = document.createElement("img");
+                image.src = report.image;
+                image.alt = report.itemName;
+                image.width = 150;
+                card.appendChild(image);
+            }
+
+            container.appendChild(card);
+
+        });
+    }
+
+    const lostItems = reports.filter(function(report) {
+        return report.type === "Lost";
     });
+
+    const foundItems = reports.filter(function(report) {
+        return report.type === "Found";
+    });
+
+    displayItems(lostItems, lostItemsContainer);
+    displayItems(foundItems, foundItemsContainer);
 }
