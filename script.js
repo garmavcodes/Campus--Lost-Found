@@ -134,3 +134,64 @@ if (lostItemsContainer && foundItemsContainer) {
     displayItems(lostItems, lostItemsContainer);
     displayItems(foundItems, foundItemsContainer);
 }
+const searchForm = document.getElementById("searchForm");
+
+if (searchForm) {
+    searchForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const searchName = document.getElementById("searchName").value.toLowerCase().trim();
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
+
+        const reports = JSON.parse(localStorage.getItem("reports")) || [];
+
+        const results = reports.filter(function(report) {
+
+            const nameMatch = report.itemName.toLowerCase().includes(searchName);
+
+            const startMatch = !startDate || report.date >= startDate;
+
+            const endMatch = !endDate || report.date <= endDate;
+
+            return nameMatch && startMatch && endMatch;
+        });
+
+        displaySearchResults(results);
+    });
+}
+
+function displaySearchResults(results) {
+
+    const container = document.getElementById("searchResults");
+    container.innerHTML = "";
+
+    if (results.length === 0) {
+        container.textContent = "No matching items found.";
+        return;
+    }
+
+    results.forEach(function(report) {
+
+        const card = document.createElement("div");
+        card.className = "item-card";
+
+        card.innerHTML = `
+            <h3>${report.itemName}</h3>
+            <p><strong>Type:</strong> ${report.type}</p>
+            <p><strong>Location:</strong> ${report.location}</p>
+            <p><strong>Date:</strong> ${report.date}</p>
+            <p><strong>Time:</strong> ${report.time}</p>
+            <p><strong>Description:</strong> ${report.description}</p>
+        `;
+
+        if (report.image) {
+            const image = document.createElement("img");
+            image.src = report.image;
+            image.alt = report.itemName;
+            card.appendChild(image);
+        }
+
+        container.appendChild(card);
+    });
+}
